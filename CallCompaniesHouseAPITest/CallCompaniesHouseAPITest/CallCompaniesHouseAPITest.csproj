@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="App_Start\EntityFrameworkProfilerBootstrapper.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="Account.cs" />
     <Compile Include="CompaniesHouseConstants.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Program.cs" />

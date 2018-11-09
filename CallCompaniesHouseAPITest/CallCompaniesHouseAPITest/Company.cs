@@ -34,7 +34,7 @@ namespace CallCompaniesHouseAPITest
 
         public bool undeliverable_registered_office_address { get; set; }
 
-        public List<Statment> confirmation_statement { get; set; }
-
+        public List<Statement> confirmation_statement { get; set; }
 
     }
+}

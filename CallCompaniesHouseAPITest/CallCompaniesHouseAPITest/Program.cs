@@ -13,35 +13,30 @@ namespace CallCompaniesHouseAPITest
     {
         static void Main(string[] args)
         {
+            Console.WriteLine();
         }
 
-        public Company GetCompanyByCompanyCode (string url)
+        public Company GetCompanyByCompanyCode(string url)
+        {
+            try
             {
-                try
+                using (var client = new HttpClient())
+                using (var response = client.GetAsync(url).Result)
+                using (var content = response.Content)
                 {
-                    using (var client = new HttpClient())
-                    using (var response = client.GetAsync(url).Result)
-                    using (var content = response.Content)
-                    {
-                        if (!response.IsSuccessStatusCode) throw new ResponseNotFoundException();
-                        var json = content.ReadAsStringAsync().Result;
+                    if (!response.IsSuccessStatusCode) throw new ResponseNotFoundException();
+                    var json = content.ReadAsStringAsync().Result;
 
-                        var companyResults = JsonConvert.DeserializeObject<Company>(json);
+                    var companyResults = JsonConvert.DeserializeObject<Company>(json);
 
-                        return companyResults;
-                    }
-                }
-
-                catch (Exception e)
-                {
-                    throw new ResponseNotFoundException(e);
-
-         
+                    return companyResults;
                 }
             }
+
+            catch (Exception e)
+            {
+                throw new ResponseNotFoundException(e);
+            }
         }
-
-
+    }
 }
-    
-
